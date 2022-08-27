@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bloc_image_uploader/auth/auth_error.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -10,9 +8,9 @@ abstract class AppState {
   final bool isLoading;
   final AuthError? authError;
 
-  AppState({
+  const AppState({
     required this.isLoading,
-    required this.authError,
+    this.authError,
   });
 }
 
@@ -21,11 +19,11 @@ class AppStateLoggedIn extends AppState {
   final User user;
   final Iterable<Reference> images;
 
-  AppStateLoggedIn({
+  const AppStateLoggedIn({
     required super.isLoading,
-    required this.images,
     required this.user,
-    required super.authError,
+    required this.images,
+    super.authError,
   });
 
   @override
@@ -50,9 +48,9 @@ class AppStateLoggedIn extends AppState {
 
 @immutable
 class AppStateLoggedOut extends AppState {
-  AppStateLoggedOut({
+  const AppStateLoggedOut({
     required super.isLoading,
-    required super.authError,
+    super.authError,
   });
   @override
   String toString() {
@@ -61,10 +59,10 @@ class AppStateLoggedOut extends AppState {
 }
 
 @immutable
-class AppStateIsInRegisterationView extends AppState {
-  AppStateIsInRegisterationView({
+class AppStateIsInRegistrationView extends AppState {
+  const AppStateIsInRegistrationView({
     required super.isLoading,
-    required super.authError,
+    super.authError,
   });
 }
 
