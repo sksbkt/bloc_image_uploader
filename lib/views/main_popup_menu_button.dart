@@ -12,15 +12,14 @@ class MainPopupMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //! temporary workaround for the issue calling context.read during an async call
-    //TODO: we are test this method
+    //* temporary workaround for the issue calling context.read during an async call
     final contextRead = context.read<AppBloc>();
     return PopupMenuButton<MenuAction>(
       onSelected: (value) async {
         switch (value) {
           case MenuAction.logOut:
             final shouldLogOut = await showLogOutDialog(context);
-            //! temporary workaround for the issue calling context.read during an async call
+            //* temporary workaround for the issue calling context.read during an async call
             if (shouldLogOut) {
               contextRead.add(
                 const AppEventLogOut(),
@@ -32,7 +31,7 @@ class MainPopupMenuButton extends StatelessWidget {
             break;
           case MenuAction.deleteAccount:
             final showDeleteAccount = await showDeleteAccountDialog(context);
-            //! temporary workaround for the issue calling context.read during an async call
+            //* temporary workaround for the issue calling context.read during an async call
             if (showDeleteAccount) {
               contextRead.add(
                 const AppEventDeleteAccount(),

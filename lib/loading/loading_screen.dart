@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class LoadingScreen {
   //?singleton patter
   LoadingScreen._sharedInstance();
-  static final LoadingScreen _shared = LoadingScreen._sharedInstance();
+  static late final LoadingScreen _shared = LoadingScreen._sharedInstance();
   factory LoadingScreen.instance() => _shared;
 
   LoadingScreenController? _controller;

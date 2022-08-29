@@ -77,7 +77,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             password: password,
           );
 
-          final userId = credentials.user!.uid;
+          // final userId = credentials.user!.uid;
           emit(
             AppStateLoggedIn(
               isLoading: false,
@@ -86,6 +86,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             ),
           );
         } on FirebaseAuthException catch (e) {
+          print('ERROR ' + e.message.toString());
           emit(
             AppStateIsInRegistrationView(
               isLoading: false,
