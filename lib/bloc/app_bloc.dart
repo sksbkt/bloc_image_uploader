@@ -6,7 +6,7 @@ import 'package:bloc_image_uploader/bloc/app_event.dart';
 import 'package:bloc_image_uploader/bloc/app_state.dart';
 import 'package:bloc_image_uploader/utils/upload_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
